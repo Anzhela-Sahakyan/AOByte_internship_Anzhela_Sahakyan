@@ -7,17 +7,17 @@
       "comments": [
         {
           "user": "Hiroshi",
-          "rate": 4,
+          "rate": 1,
           "comment": "I love the traditional architecture in Japan!"
         },
         {
           "user": "Yumi",
-          "rate": 5,
+          "rate": 1,
           "comment": "The food in Japan is absolutely delicious."
         },
         {
           "user": "Takeshi",
-          "rate": 3,
+          "rate": 1,
           "comment": "I wish to visit Japan someday."
         }
       ]

@@ -1,6 +1,6 @@
 import { Card, CardContent, Stack, Typography } from "@mui/material";
 
-import posts from "../Data/posts";
+import data from "../../src/db.json";
 import { Box } from "@mui/system";
 import EditBtn from "../Buttons/EditBtn";
 import DeleteBtn from "../Buttons/DeleteBtn";
@@ -9,9 +9,9 @@ import AddComment from "../Add comments/AddComment";
 import AddCommentRate from "../Add comments/AddCommentRate";
 import AddCommentBtn from "../Add comments/AddCommentBtn";
 import { useState } from "react";
-import { Calculate } from "@mui/icons-material";
 
 export default function Posts() {
+  const posts = data.posts;
   const postsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
