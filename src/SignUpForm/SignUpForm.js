@@ -9,6 +9,10 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,14 +22,24 @@ const SignUpForm = () => {
     return emailValidPattern.test(email);
   };
 
-  const handleSignIn = (e) => {
-    if (!validEmail(email)) {
-      e.preventDefault();
-      console.log("email not valid");
-      return;
-    }
-    console.log("signed in");
+  const navigate = useNavigate();
+
+  const handleSignIn = async (e) => {
     e.preventDefault();
+
+    // if (!validEmail(email)) {
+    //   console.log("email not valid");
+    //   return;
+    // }
+    // console.log("signed in");
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log("success");
+      navigate("/");
+    } catch (error) {
+      console.log("error", error.message);
+    }
   };
 
   return (

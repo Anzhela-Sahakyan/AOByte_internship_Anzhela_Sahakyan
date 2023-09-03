@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 
+import { useNavigate } from "react-router-dom";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,18 +21,22 @@ const LoginForm = () => {
   };
 
   const validatePassword = (password) => {
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const passwordPattern = /^.{6,}$/;
     return passwordPattern.test(password);
   };
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
+    e.preventDefault();
     if (!validateEmail(email) || !validatePassword(password)) {
       console.log("email or password not valid");
-      e.preventDefault();
+
       return;
     }
 
     console.log("loged in");
-    e.preventDefault();
+
+    navigate("/profile");
   };
 
   return (
