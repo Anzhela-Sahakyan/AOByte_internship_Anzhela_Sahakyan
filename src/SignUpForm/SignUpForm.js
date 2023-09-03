@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,13 +37,14 @@ const SignInForm = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          marginTop: "100px",
         }}
       >
         <Avatar style={{ backgroundColor: "#f50057", margin: "10px" }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign up
         </Typography>
         <form
           style={{ width: "100%", marginTop: "10px" }}
@@ -75,7 +76,7 @@ const SignInForm = () => {
             color="primary"
             style={{ margin: "20px 0" }}
           >
-            Sign In
+            Sign Up
           </Button>
         </form>
       </Paper>
@@ -83,4 +84,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

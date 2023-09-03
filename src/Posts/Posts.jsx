@@ -1,6 +1,5 @@
 import { Card, CardContent, Stack, Typography } from "@mui/material";
-import SortIcon from "@mui/icons-material/Sort";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
+
 import posts from "../Data/posts";
 import { Box } from "@mui/system";
 import EditBtn from "../Buttons/EditBtn";

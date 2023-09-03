@@ -42,6 +42,7 @@ const LoginForm = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          marginTop: "100px",
         }}
       >
         <Avatar style={{ backgroundColor: "#43a047", margin: "10px" }}>
