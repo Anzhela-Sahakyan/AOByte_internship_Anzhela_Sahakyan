@@ -1,25 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import CreatePosts from "./CreatePosts/CreatePosts";
-import SubmitPostBtn from "./CreatePosts/SubmitPostBtn";
 import LoginForm from "./LogInForm/LoginForm";
-import ShowPosts from "./showPosts";
-import HomePage from "./Pages/HomePage";
 import SignUpForm from "./SignUpForm/SignUpForm";
-import LoginBtn from "./Buttons/ LoginBtn";
-import SignupBtn from "./Buttons/SignupBtn";
+
+import { Box } from "@mui/material";
+
+import HomePage from "./Pages/Home.Page";
+import Header from "./Header/Header";
 
 function App() {
   return (
-    <div className="App">
+    <Box className="App">
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signUp" element={<SignUpForm />} />
         <Route path="/Login" element={<LoginForm />} />
       </Routes>
-      <LoginBtn />
-      <SignupBtn />
-    </div>
+    </Box>
   );
 }
 

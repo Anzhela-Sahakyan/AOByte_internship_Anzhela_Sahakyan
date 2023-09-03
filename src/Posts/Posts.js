@@ -5,6 +5,8 @@ import { Box } from "@mui/system";
 import EditBtn from "../Buttons/EditBtn";
 import DeleteBtn from "../Buttons/DeleteBtn";
 import { Pagination } from "../Pagination/Pagination";
+import AddComment from "../Add comments/AddComment";
+import AddCommentRate from "../Add comments/AddCommentRate";
 
 export default function Posts() {
   const renderedPosts = posts.map((post, i) => (
@@ -69,6 +71,10 @@ export default function Posts() {
           ))}
           <EditBtn />
           <DeleteBtn />
+        </Box>
+        <Box>
+          <AddComment />
+          <AddCommentRate />
         </Box>
       </CardContent>
     </Card>
