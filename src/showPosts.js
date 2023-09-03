@@ -5,18 +5,15 @@ import SortIcon from "@mui/icons-material/Sort";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { useEffect, useState } from "react";
 import CalculateMedian from "./helpers/CalculateMedian";
-import * as data from "../src/db.json";
+import data from "./db.json";
 
 export default function ShowPosts() {
-  const [showPosts, setShowPosts] = useState(false);
-  const [btnValue, setBtnValue] = useState("Show posts");
+  const [showPosts, setShowPosts] = useState(true);
+  const [btnValue, setBtnValue] = useState("Hide Posts");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("../src/db.json")
-      .then((response) => response.json())
-      .then((data) => setPosts(data))
-      .catch((error) => console.error("Error  fetching data", error));
+    setPosts(data.posts);
   }, []);
 
   function handleClick() {
@@ -36,7 +33,7 @@ export default function ShowPosts() {
       const median2 = CalculateMedian(
         post2.comments.map((comment) => comment.rate)
       );
-      return median1 - median2;
+      return median2 - median1;
     });
 
     setPosts(sortedPosts);

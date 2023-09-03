@@ -1,10 +1,10 @@
-import React from "react";
 import RenderBtn from "../Buttons/RenderBtn";
+import { Box } from "@mui/material";
 
 export default function SubmitPostBtn() {
   return (
-    <div>
+    <Box>
       <RenderBtn value="Post" onClick={() => {}} />
-    </div>
+    </Box>
   );
 }

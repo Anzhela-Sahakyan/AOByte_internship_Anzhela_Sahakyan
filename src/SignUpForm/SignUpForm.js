@@ -27,12 +27,6 @@ const SignUpForm = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
 
-    // if (!validEmail(email)) {
-    //   console.log("email not valid");
-    //   return;
-    // }
-    // console.log("signed in");
-
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("success");
