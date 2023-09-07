@@ -9,16 +9,18 @@ import AddComment from "../Add comments/AddComment";
 import AddCommentRate from "../Add comments/AddCommentRate";
 import AddCommentBtn from "../Add comments/AddCommentBtn";
 import { useState } from "react";
+import CreatePosts from "../CreatePosts/CreatePosts";
 
 export default function Posts() {
   const posts = data.posts;
   const postsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
+  const [newPosts, setNewPosts] = useState([]);
 
   const displayPosts = () => {
     const startIndex = (currentPage - 1) * postsPerPage;
     const endIndex = startIndex + postsPerPage;
-    return posts.slice(startIndex, endIndex);
+    return [...posts, ...newPosts].slice(startIndex, endIndex);
   };
 
   const handlePageChange = (even, newPage) => {
@@ -28,6 +30,18 @@ export default function Posts() {
   const CalculatePostNumber = (index) => {
     return (currentPage - 1) * postsPerPage + index + 1;
   };
+  const handleAddPost = (postText) => {
+    const newPostObject = {
+      name: "username",
+      post: postText,
+      comments: [],
+    };
+    setNewPosts([...newPosts, newPostObject]);
+
+    setCurrentPage(
+      Math.ceil((posts.length + newPosts.length + 1) / postsPerPage)
+    );
+  };
   const renderedPosts = displayPosts().map((post, index) => (
     <Card
       key={post.name}
@@ -36,8 +50,8 @@ export default function Posts() {
         borderRadius: "5px",
         margin: "20px",
         padding: "10px",
-        maxWidth: "70%",
-        minWidth: "1000px",
+        maxWidth: "60%",
+        minWidth: "800px",
         padding: "15px",
       }}
     >
@@ -108,6 +122,7 @@ export default function Posts() {
         flexFlow: "column",
       }}
     >
+      <CreatePosts onAddPost={handleAddPost} />
       <Stack sx={{ alignItems: "center" }}>{renderedPosts}</Stack>
       <Pagination
         count={totalPageCount}

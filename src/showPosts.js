@@ -1,4 +1,4 @@
-import RenderPostsBtn from "./Buttons/RenderBtn";
+import RenderPostsBtn from "./Buttons/RenderPostsBtn";
 import { Box } from "@mui/material";
 import Posts from "./Posts/Posts";
 import SortIcon from "@mui/icons-material/Sort";
