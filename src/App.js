@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 
 import HomePage from "./Pages/Home.Page";
 import Header from "./Header/Header";
+import Profile from "./Profile/Profile";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signUp" element={<SignUpForm />} />
-        <Route path="/Login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/profile" Component={Profile} />
       </Routes>
     </Box>
   );

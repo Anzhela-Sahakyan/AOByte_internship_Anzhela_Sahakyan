@@ -1,6 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import LoginBtn from "../Buttons/ LoginBtn";
 import SignupBtn from "../Buttons/SignupBtn";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -11,12 +12,18 @@ export default function Header() {
         justifyContent: "space-between",
       }}
     >
-      <Typography variant="h3" sx={{ display: "flex", padding: "15px" }}>
-        Posts App
-      </Typography>
+      <Link to={"/"} style={{ textDecoration: "none", outline: "none" }}>
+        <Typography variant="h3" sx={{ display: "flex", padding: "15px" }}>
+          Posts App
+        </Typography>
+      </Link>
       <Box sx={{ padding: "15px" }}>
-        <LoginBtn />
-        <SignupBtn />
+        <Link to={"/login"}>
+          <LoginBtn />
+        </Link>
+        <Link to={"/signUp"}>
+          <SignupBtn />
+        </Link>
       </Box>
     </Box>
   );

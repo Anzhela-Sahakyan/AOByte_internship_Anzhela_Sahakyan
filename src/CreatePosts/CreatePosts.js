@@ -1,17 +1,40 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
+import RenderPostsBtn from "../Buttons/RenderPostsBtn";
 
-export default function CreatePosts() {
+export default function CreatePosts({ onAddPost }) {
+  const [postText, setPostText] = React.useState("");
+
+  const handleAddPost = () => {
+    if (postText.trim() !== "") {
+      onAddPost(postText);
+      setPostText("");
+    }
+  };
+
   return (
-    <TextField
-      sx={{
-        marginTop: "20px",
-        width: "300px",
-      }}
-      id="outlined-basic"
-      label="Post something"
-      variant="outlined"
-      multiline
-    />
+    <Box>
+      <TextField
+        sx={{
+          marginTop: "20px",
+          width: "300px",
+        }}
+        id="outlined-basic"
+        label="Post something"
+        variant="outlined"
+        multiline
+        value={postText}
+        onChange={(e) => setPostText(e.target.value)}
+      />
+      <Box>
+        <Button
+          variant="contained"
+          sx={{ marginTop: "10px" }}
+          onClick={handleAddPost}
+        >
+          Add post
+        </Button>{" "}
+      </Box>
+    </Box>
   );
 }

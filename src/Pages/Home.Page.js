@@ -6,8 +6,6 @@ import SubmitPostBtn from "../CreatePosts/SubmitPostBtn";
 export default function HomePage() {
   return (
     <>
-      <CreatePosts />
-      <SubmitPostBtn />
       <ShowPosts />
     </>
   );

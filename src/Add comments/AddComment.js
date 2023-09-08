@@ -6,7 +6,7 @@ export default function AddComment() {
     <TextField
       label="Add a comment"
       variant="outlined"
-      sx={{ width: "500px" }}
+      sx={{ width: "500px", margin: "0 10px" }}
     />
   );
 }
