@@ -15,12 +15,11 @@ export default function Posts() {
   const posts = data.posts;
   const postsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
-  const [newPosts, setNewPosts] = useState([]);
 
   const displayPosts = () => {
     const startIndex = (currentPage - 1) * postsPerPage;
     const endIndex = startIndex + postsPerPage;
-    return [...posts, ...newPosts].slice(startIndex, endIndex);
+    return posts.slice(startIndex, endIndex);
   };
 
   const handlePageChange = (even, newPage) => {
@@ -36,11 +35,23 @@ export default function Posts() {
       post: postText,
       comments: [],
     };
-    setNewPosts([...newPosts, newPostObject]);
-
-    setCurrentPage(
-      Math.ceil((posts.length + newPosts.length + 1) / postsPerPage)
-    );
+    fetch("http://localhost:3000/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newPostObject),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response not ok");
+        }
+        return response.json();
+      })
+      .then(() => {
+        setCurrentPage(Math.ceil((posts.length + 1) / postsPerPage));
+      })
+      .catch((error) => console.log("Error adding post:", error));
   };
   const renderedPosts = displayPosts().map((post, index) => (
     <Card
